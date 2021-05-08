@@ -27,7 +27,7 @@ exports.Logout = function (req, res) {
 exports.GetAllUsers = function (req, res) {
   try {
     var { page, sortField, sortType, name, family, email, isAdmin } = req.query;
-    const ItemPerPage = 2
+    const ItemPerPage = 4
     console.log(isAdmin);
     User.find()
       .where({
@@ -35,7 +35,8 @@ exports.GetAllUsers = function (req, res) {
         email: { $regex: new RegExp(email, "i") },
         isAdmin: (isAdmin === "" || isAdmin === undefined) ? { $in: [false, true] } : isAdmin
       })
-      .select("firstName lastName email isAdmin createdAt")
+      .select("firstName lastName email isAdmin createdAt role")
+      .populate("role", "title")
       .sort([[sortField, sortType]])
       .limit(ItemPerPage)
       .skip((page - 1) * ItemPerPage)

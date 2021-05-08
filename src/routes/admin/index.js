@@ -25,6 +25,7 @@ AdminRouter.delete("/permision", PermisionContoller.DeletePermision);
 AdminRouter.get("/role", RoleController.GetRoles);
 AdminRouter.post("/role", RoleController.AddRole);
 AdminRouter.delete("/role", RoleController.DeleteRole);
+AdminRouter.put("/role", RoleController.EditRole);
 
 //category
 
