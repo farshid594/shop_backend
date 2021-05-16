@@ -6,10 +6,10 @@ exports.GetRoles = function (req, res) {
       if (err) {
         return res.status(401).json({ message: "user not exist" });
       }
-      res.status(200).json({ data: docs });
+      res.status(200).json({ data: docs, message: "success" });
     })
   } catch (e) {
-    
+
     return res.status(401).json({ message: "user not exist" });
   }
 };

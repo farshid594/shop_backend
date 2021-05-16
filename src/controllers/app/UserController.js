@@ -90,7 +90,7 @@ exports.SigninAsAdmin = function (req, res) {
           if (err) {
             return res.status(500).json({ message: "server error" });
           }
-          res.status(200).json({ token: token });
+          res.status(200).json({ token: token, message: "Succcess" });
         });
       });
     });
